@@ -10,11 +10,6 @@ public abstract class CellMap implements Config {
     protected int height = -1;
     protected abstract ImageIcon getWall();
     protected abstract ImageIcon getFloor();
-
-    public Cell[][] getMap() {
-        return map;
-    }
-
     public int getWidth() {
         return width;
     }
@@ -22,5 +17,9 @@ public abstract class CellMap implements Config {
     public int getHeight() {
         return height;
     }
+    protected abstract ImageIcon getTable();
+    protected abstract ImageIcon getChair();
+    protected abstract ImageIcon getPlant();
+    protected abstract ImageIcon getCat();
 
 }

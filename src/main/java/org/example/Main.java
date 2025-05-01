@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.view.MainFrame;
+import org.example.view.mode.DebugMode;
 
 import javax.swing.*;
 public class Main {
@@ -9,5 +10,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
+        frame.setRateMode(new DebugMode(frame));
     }
 }

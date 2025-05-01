@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.Config;
+import org.example.view.mode.RateMode;
 import org.example.view.panel.BottomPanel;
 import org.example.view.panel.SidePanel;
 import org.example.view.panel.TopPanel;
@@ -9,17 +10,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainFrame extends JFrame implements Config, ActionListener {
-    Image icon = new ImageIcon(ICON_PATH).getImage().getScaledInstance(64,64,Image.SCALE_DEFAULT);
-    TopPanel topPanel;
-    BottomPanel bottomPanel;
-    SidePanel sidePanel;
+public class MainFrame extends JFrame implements Config{
+    private final Image icon = new ImageIcon(ICON_PATH).getImage().getScaledInstance(64,64,Image.SCALE_DEFAULT);
+    public static TopPanel topPanel;
+    public static BottomPanel bottomPanel;
+    public static SidePanel sidePanel;
+    private RateMode rateMode = DEFAUT_RATE_MODE;
     public MainFrame(String name) {
         super(name);
         init();
     }
     void init(){
-        Timer timer = new Timer(GAME_FRAMES_PER_SECOND,this);
         setIconImage(icon);
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
@@ -46,7 +47,13 @@ public class MainFrame extends JFrame implements Config, ActionListener {
                 repaint();
             }
         });
-        timer.start();
+        rateMode.init();
+    }
+
+    public void setRateMode(RateMode newRateMode){
+        rateMode.stop();
+        rateMode = newRateMode;
+        rateMode.init();
     }
     @Override
     public void setVisible(boolean b){
@@ -61,8 +68,4 @@ public class MainFrame extends JFrame implements Config, ActionListener {
         super.repaint();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        topPanel.next(topPanel.topMap.map);
-    }
 }

@@ -10,10 +10,12 @@ import java.util.List;
 
 public class Cell extends JPanel implements Config {
     private final ImageIcon[] layers = new ImageIcon[3];
+    public int type;
 
-    public Cell(ImageIcon rootImage) {
+    public Cell(ImageIcon rootImage, int type) {
         setOpaque(false);
         layers[0] = rootImage;
+        this.type = type;
     }
     public void setRoot(ImageIcon imageIcon){
         layers[0] = imageIcon;
@@ -26,6 +28,10 @@ public class Cell extends JPanel implements Config {
     public void clearRobot(){
         layers[2] = null;
         repaint();
+    }
+    public void addDecoration(ImageIcon imageIcon){
+        layers[2] = imageIcon;
+        type = TYPE_IMPASSABLE_DECORATION;
     }
     public void addTrash(ImageIcon imageIcon){
         layers[1] = imageIcon;
