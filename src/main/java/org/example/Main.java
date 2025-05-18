@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.view.MainFrame;
-import org.example.view.mode.DebugMode;
+import org.example.mode.DebugMode;
 
 import javax.swing.*;
 public class Main {

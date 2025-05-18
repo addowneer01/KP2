@@ -1,4 +1,4 @@
-package org.example.view.mode;
+package org.example.mode;
 
 import org.example.view.MainFrame;
 import org.example.view.RobotView;

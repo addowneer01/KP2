@@ -12,6 +12,7 @@ public class Cell extends JPanel implements Config {
     private final ImageIcon[] layers = new ImageIcon[3];
     public int type;
     public int countTrash = 0;
+    public boolean visibility = true;
 
     public Cell(ImageIcon rootImage, int type) {
         setOpaque(false);

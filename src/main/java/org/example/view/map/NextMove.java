@@ -7,7 +7,13 @@ public class NextMove {
         x = nx;
         y = ny;
     }
-    public static NextMove getNextMove(int cX, int cY, int direction){
+    public XY getXY(){
+        return new XY(x,y);
+    }
+    public static NextMove get(XY pos, int direction){
+        return get(pos.x,pos.y,direction);
+    }
+    public static NextMove get(int cX, int cY, int direction){
         int newX;
         int newY;
         switch (direction){

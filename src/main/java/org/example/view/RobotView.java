@@ -21,7 +21,7 @@ public class RobotView extends ImageIcon implements Config {
     }
     public Cell[][] move(byte direction){
         Cell[][] newMap = cellMap.map;
-        NextMove nextMove = NextMove.getNextMove(cX,cY,direction);
+        NextMove nextMove = NextMove.get(cX,cY,direction);
         Cell x = newMap[nextMove.x][nextMove.y];
         if (x.type != TYPE_PASSABLE) return null;
         orientation = direction;

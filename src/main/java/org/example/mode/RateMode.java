@@ -1,4 +1,4 @@
-package org.example.view.mode;
+package org.example.mode;
 
 public interface RateMode {
     void init();

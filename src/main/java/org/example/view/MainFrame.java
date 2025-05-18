@@ -1,7 +1,7 @@
 package org.example.view;
 
 import org.example.Config;
-import org.example.view.mode.RateMode;
+import org.example.mode.RateMode;
 import org.example.view.panel.BottomPanel;
 import org.example.view.panel.SidePanel;
 import org.example.view.panel.TopPanel;
@@ -25,7 +25,7 @@ public class MainFrame extends JFrame implements Config{
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
         topPanel = new TopPanel();
-        bottomPanel = new BottomPanel();
+        bottomPanel = new BottomPanel(topPanel.topMap);
         centerPanel.add(topPanel, BorderLayout.NORTH);
         centerPanel.add(bottomPanel, BorderLayout.SOUTH);
         sidePanel = new SidePanel();

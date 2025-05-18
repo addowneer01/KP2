@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.view.mode.RateMode;
-import org.example.view.mode.TimerMode;
+import org.example.mode.RateMode;
+import org.example.mode.TimerMode;
 
 public interface Config {
     int SPRITE_SIZE = 64;
