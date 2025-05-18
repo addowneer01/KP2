@@ -4,6 +4,8 @@ import org.example.Config;
 import org.example.view.map.Cell;
 import org.example.view.map.CellMap;
 import org.example.view.map.NextMove;
+import org.example.view.map.XY;
+import org.example.view.panel.BottomPanel;
 
 import javax.swing.*;
 
@@ -29,6 +31,7 @@ public class RobotView extends ImageIcon implements Config {
         x.addRobot(this);
         cX = nextMove.x;
         cY = nextMove.y;
+        BottomPanel.trace.add(direction,new XY(cX,cY));
         return newMap;
     }
     static void init(){

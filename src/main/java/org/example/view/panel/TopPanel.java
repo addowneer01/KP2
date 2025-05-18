@@ -1,6 +1,7 @@
 package org.example.view.panel;
 
 import org.example.Config;
+import org.example.view.MainFrame;
 import org.example.view.RobotView;
 import org.example.view.map.Cell;
 import org.example.view.map.CellMap;
@@ -36,5 +37,6 @@ public class TopPanel extends JPanel implements Config {
     public void next(Cell[][] newMap){
         topMap.map = newMap;
         repaint();
+        MainFrame.bottomPanel.next();
     }
 }
