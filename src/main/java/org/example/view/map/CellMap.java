@@ -21,5 +21,4 @@ public abstract class CellMap implements Config {
     protected abstract ImageIcon getChair();
     protected abstract ImageIcon getPlant();
     protected abstract ImageIcon getCat();
-
 }

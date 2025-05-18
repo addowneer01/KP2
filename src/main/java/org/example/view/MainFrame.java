@@ -15,7 +15,7 @@ public class MainFrame extends JFrame implements Config{
     public static TopPanel topPanel;
     public static BottomPanel bottomPanel;
     public static SidePanel sidePanel;
-    private RateMode rateMode = DEFAUT_RATE_MODE;
+    private RateMode rateMode = DEFAULT_RATE_MODE;
     public MainFrame(String name) {
         super(name);
         init();

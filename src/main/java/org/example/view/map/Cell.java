@@ -11,6 +11,7 @@ import java.util.List;
 public class Cell extends JPanel implements Config {
     private final ImageIcon[] layers = new ImageIcon[3];
     public int type;
+    public int countTrash = 0;
 
     public Cell(ImageIcon rootImage, int type) {
         setOpaque(false);
@@ -23,6 +24,7 @@ public class Cell extends JPanel implements Config {
     }
     public void addRobot(RobotView robotView){
         layers[2] = robotView.get();
+        if (countTrash != 0) if (robotView.clear(countTrash)) clearTrash();
         repaint();
     }
     public void clearRobot(){
@@ -33,12 +35,14 @@ public class Cell extends JPanel implements Config {
         layers[2] = imageIcon;
         type = TYPE_IMPASSABLE_DECORATION;
     }
-    public void addTrash(ImageIcon imageIcon){
+    public void addTrash(ImageIcon imageIcon, int c){
         layers[1] = imageIcon;
+        countTrash = c;
         repaint();
     }
     public void clearTrash(){
         layers[1] = null;
+        countTrash = 0;
         repaint();
     }
     public ImageIcon[] getLayers(){
