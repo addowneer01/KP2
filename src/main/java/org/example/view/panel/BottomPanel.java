@@ -42,9 +42,6 @@ public class BottomPanel extends JPanel implements Config {
         }
         drawRoad(g,trace.getFirst(),Color.WHITE);
     }
-    public void drawRoad(Graphics g, XY pos0, XY pos, Color color){
-        drawRoad(g,pos0.x,pos0.y,pos.x,pos.y,color);
-    }
     public void drawRoad(Graphics g,int x0,int y0, int x, int y, Color color){
         Graphics2D g2 = (Graphics2D) g;
         int r = 15;
@@ -53,6 +50,9 @@ public class BottomPanel extends JPanel implements Config {
         g2.drawLine(x0*SPRITE_SIZE+x0 +SPRITE_SIZE/2,y0*SPRITE_SIZE+y0 +SPRITE_SIZE/2,
                 x*SPRITE_SIZE+x +SPRITE_SIZE/2,y*SPRITE_SIZE+y +SPRITE_SIZE/2);
         g2.fillOval(x*SPRITE_SIZE+x +SPRITE_SIZE/2-r/2,y*SPRITE_SIZE+y +SPRITE_SIZE/2-r/2,r,r);
+    }
+    public void drawRoad(Graphics g, XY pos0, XY pos, Color color){
+        drawRoad(g,pos0.x,pos0.y,pos.x,pos.y,color);
     }
     public void drawRoad(Graphics g, Node first, Color color){
         while (first.next != null){
