@@ -18,6 +18,7 @@ public class TopPanel extends JPanel implements Config {
         robot= topMap.getRobotView();
         topMap.map[robot.cX][robot.cY].addRobot(robot);
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
