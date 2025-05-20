@@ -2,13 +2,18 @@ package org.example.trajectory;
 
 import org.example.view.map.XY;
 
-public class Node<P>{
-    Node<P> previous = null;
-    public Node<P> next = null;
+import java.util.HashSet;
+
+public class Node implements Parameters{
+    Node previous = null;
+    public Node next = null;
     public XY pos;
     public byte nextDir;
-    P p;
-    public Node(XY pos){
+    public Node(XY pos) {
         this.pos = pos;
+    }
+    public Node(Node copy){
+        pos = copy.pos;
+        nextDir = copy.nextDir;
     }
 }

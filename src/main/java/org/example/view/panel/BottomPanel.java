@@ -1,6 +1,7 @@
 package org.example.view.panel;
 
 import org.example.Config;
+import org.example.algo.AStar;
 import org.example.trajectory.Node;
 import org.example.trajectory.Road;
 import org.example.view.RobotView;
@@ -20,8 +21,9 @@ public class BottomPanel extends JPanel implements Config {
         setBackground(Color.BLACK);
         robotView = topMap.getRobotView();
         bottomMap = new BottomMap(topMap);
-        trace = new Road<>(new XY(robotView.cX,robotView.cY),5);
+        trace = new Road(new XY(robotView.cX,robotView.cY),5);
     }
+    Node algo = AStar.getShortCut(new XY(5,4),new XY(14,2)).getFirst();
     public void next(){
         repaint();
     }
@@ -41,6 +43,7 @@ public class BottomPanel extends JPanel implements Config {
             }
         }
         drawRoad(g,trace.getFirst(),Color.WHITE);
+        drawRoad(g, algo,Color.RED);
     }
     public void drawRoad(Graphics g,int x0,int y0, int x, int y, Color color){
         Graphics2D g2 = (Graphics2D) g;
