@@ -2,9 +2,7 @@ package org.example.trajectory;
 
 import org.example.view.map.XY;
 
-import java.util.HashSet;
-
-public class Node implements Parameters{
+public class Node{
     Node previous = null;
     public Node next = null;
     public XY pos;

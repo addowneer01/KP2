@@ -3,6 +3,7 @@ package org.example.view.map;
 public class XY{
     public int x;
     public int y;
+    public float c;
     public XY(int x, int y){
         this.x = x;
         this.y = y;
@@ -13,7 +14,9 @@ public class XY{
     @Override
     public boolean equals(Object obj) {
         XY other = (XY) obj;
-        return x == other.x && y == other.y; // сравнение по значениям координат
+        boolean f = x == other.x && y == other.y;
+//        if (f) return other.c<c;
+        return f;
     }
 
     @Override

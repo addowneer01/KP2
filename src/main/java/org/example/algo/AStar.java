@@ -33,7 +33,12 @@ public class AStar implements Config {
     protected void newScroll(Road road){
         for (byte i = 0;i<8;i++){
             NextMove next = NextMove.get(road.getLast().pos,i);
-            if (map[next.x][next.y].type == TYPE_PASSABLE&& !road.passed.contains(next.getXY())) {
+            XY n = next.getXY();
+            float q;
+            if (i%2==1)  q= (float) Math.sqrt(2);
+            else q = 1;
+            n.c = q + road.getSize();
+            if (map[n.x][n.y].type == TYPE_PASSABLE&& !road.passed.contains(n)) {
                 Road newRoad = new Road(road);
                 newRoad.add(i,next.getXY());
                 queue.add(newRoad);
@@ -47,17 +52,17 @@ public class AStar implements Config {
         private final XY f;
         @Override
         public int compare(Road o1, Road o2) {
-            int n1 = Math.round(AStar.imaginaryValue(o1,f)-imaginaryValue(o2,f));
-//            if (n1!=0) return n1;
-//            int n2 = (int) Math.ceil(
-//                    Math.sqrt(Math.pow(o1.getLast().pos.x - f.x,2)+Math.pow(o1.getLast().pos.y - f.y,2))
-//                    - Math.sqrt(Math.pow(o2.getLast().pos.x - f.x,2)+Math.pow(o2.getLast().pos.y - f.y,2))
-//            );
-            return n1;
+            float c1 = AStar.imaginaryValue(o1,f);
+            float c2 = AStar.imaginaryValue(o2,f);
+            if (c1-c2>0) return 1;
+            else if (c1-c2<0) return -1;
+            else return 0;
         }
     }
     private static float imaginaryValue(Road road,XY f){
-        return Math.max(Math.abs(road.getLast().pos.x - f.x), Math.abs(Math.abs(road.getLast().pos.y - f.y)))
-                + road.getSize();
+        int x = Math.abs(road.getLast().pos.x - f.x);
+        int y = Math.abs(road.getLast().pos.y - f.y);
+        return (float) Math.sqrt(Math.pow(x,2)+Math.pow(y,2))+ road.getSize();
+//        return (Math.min(x,y)*(float)Math.sqrt(2)+ Math.abs(x-y) + road.getSize());
     }
 }

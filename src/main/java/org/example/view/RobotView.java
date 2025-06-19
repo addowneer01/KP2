@@ -43,4 +43,7 @@ public class RobotView extends ImageIcon implements Config {
     public ImageIcon get(){
         return robot[orientation];
     }
+    public XY getXY(){
+        return new XY(cX,cY);
+    }
 }

@@ -23,7 +23,6 @@ public class BottomPanel extends JPanel implements Config {
         bottomMap = new BottomMap(topMap);
         trace = new Road(new XY(robotView.cX,robotView.cY),5);
     }
-    Node algo = AStar.getShortCut(new XY(5,4),new XY(14,2)).getFirst();
     public void next(){
         repaint();
     }
@@ -42,8 +41,9 @@ public class BottomPanel extends JPanel implements Config {
                 else g.drawImage(emptyCell.getImage(), i*SPRITE_SIZE+1*i, j*SPRITE_SIZE+1*j, SPRITE_SIZE, SPRITE_SIZE, this);
             }
         }
-        drawRoad(g,trace.getFirst(),Color.WHITE);
-        drawRoad(g, algo,Color.RED);
+//        drawRoad(g,trace.getFirst(),Color.WHITE);
+        drawRoad(g, AStar.getShortCut(new XY(14,2),new XY(robotView.cX,robotView.cY)).getFirst(),Color.RED);
+//        drawRoad(g, AStar.getShortCut(new XY(14,2),new XY(4,1)).getFirst(),Color.RED);
     }
     public void drawRoad(Graphics g,int x0,int y0, int x, int y, Color color){
         Graphics2D g2 = (Graphics2D) g;
